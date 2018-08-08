@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mb-3">
+        <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                <img src="/images/drinks.png" alt="Website Logo" style="width: 50px" id="website_logo"/></a>
+            </nav>
+        <!-- First row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="display-4 mt-3 mb-3">Login and Registration</h1>
+            </div>
+        </div>
+        <!-- Second row -->
+        <div class="row">
+            <!-- First column - Registration -->
+            <div class="col-sm-6 bg-light pt-2 pb-2 border-right">
+                <h3 class="mb-3">Register here!</h3>
+                <% JSON.stringify(messages) %>
+                <% if(messages.registration) { %>
+                    <% for (var x of messages.registration) { %>
+                    <div class="alert alert-danger" role="alert"><%= x %>
+                        <button type="button" class="close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <% } %>
+                <% } %>
+                <form action='/registration' method='post'>
+                    <div class="form-group">
+                        <label>First Name:</label>
+                        <input type="text" class="form-control" name="first_name" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name:</label>
+                        <input type="text" class="form-control" name="last_name" placeholder="Enter last name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label>Birthday:</label>
+                        <input type="date" class="form-control" name="birthday">
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password:</label>
+                        <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Register!</button>
+                </form>
+            </div>
+            <!-- Second column - Login -->
+            <div class="col-sm-6 bg-light pt-2 pb-2">
+                <h3 class="mb-3">Login here!</h3>
+                <% JSON.stringify(messages) %>
+                <% if(messages.login) { %>
+                    <% for (var y of messages.login) { %>
+                    <div class="alert alert-danger" role="alert"><%= y %>
+                        <button type="button" class="close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <% } %>
+                <% } %>
+                <form action="/login" method='post'>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Login!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    $('span').click(function() {
+        $(this).parent().parent().hide();
+    })
+    </script>
+</body>
+</html>
